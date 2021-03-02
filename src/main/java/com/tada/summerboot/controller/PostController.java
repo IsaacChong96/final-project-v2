@@ -29,7 +29,7 @@ public class PostController {
     @Autowired
     UserServiceImpl user_service_implementation;
 
-    @GetMapping(path="/post/show-username/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+    @GetMapping(path="/posts/show-username/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public String showUserName(Model model, @PathVariable("id") Integer id) {
         Optional <Post> post = post_service_implementation.getPost(id);
         model.addAttribute("post", post.get());
@@ -127,18 +127,18 @@ public class PostController {
         return "{\"status\": \"success\"}";
     }
 
-    @GetMapping(path="/post/show/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-    public String show(Model model, @PathVariable("id") Integer id) {
-        Optional <Post> post = post_service_implementation.getPost(id);
-        model.addAttribute("post", post);
-        return "examples/show-post";
-    }
+//    @GetMapping(path="/post/show/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+//    public String show(Model model, @PathVariable("id") Integer id) {
+//        Optional <Post> post = post_service_implementation.getPost(id);
+//        model.addAttribute("post", post);
+//        return "show-post";
+//    }
 
     //TODO - change to delete
     @GetMapping(path="/post/delete/{id}")
     public String destroy(@PathVariable("id") Integer id) {
         post_service_implementation.deletePost(id);
-        return "examples/every-posts";
+        return "index";
     }
 
     @RequestMapping(path = {"post/edit", "post/edit/{id}"})
