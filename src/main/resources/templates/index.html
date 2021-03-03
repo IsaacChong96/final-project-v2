@@ -61,16 +61,56 @@
 
         <!-- First column -->
         <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-<!--          <ul th:each="post,stats : ${posts}" class="grid-lod effect-2" id="grid">-->
-<!--            <li>-->
+
+          <div th:each="post, stats : ${posts}">
+            <article>
+              <div class="post-details">
+                <h2 th:text="${post.title}" class="post-title"></h2>
+                <p th:text="*{users[stats.index].username}"></p>
+                <p class="post-date">
+                  <i class="fa fa-calendar-o"></i>
+                  <span
+                          th:text="${#dates.format(post.timestamp, 'dd-MMM-yyyy')}"
+                  ></span>
+                </p>
+              </div>
+              <a th:href="@{post/show-username/{id}(id=${post.id})}">
+                <img
+                        th:src="'/post/images/' + ${post.id}"
+                        class="img-responsive"
+                        alt=""
+                />
+              </a>
+
+              <div class="post-options">
+                <a th:href="@{post/show-username/{id}(id=${post.id})}">
+                  View post &rarr;
+                </a>
+
+                <div class="post-edits">
+                  <a th:href="@{post/edit/{id}(id=${post.id})}">
+                    <i class="fa fa-pencil"></i>
+                  </a>
+                  <a
+                          th:href="@{post/delete/{id}(id=${post.id})}"
+                          onclick="return confirm('Are you sure you want to delete this item')"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!--          <ul class="grid-lod effect-2" id="grid">-->
+<!--            <li th:each="post : ${posts}">-->
 <!--              <figure class="effect-oscar">-->
-<!--                <img th:src="${post.imageURL}" class="img-responsive" />-->
+<!--&lt;!&ndash;                <img th:src="${post.imageURL}" class="img-responsive" />&ndash;&gt;-->
 
 <!--                <figcaption>-->
-<!--                  <h2 th:text="${post.title}">Title</h2>-->
+<!--                  <h2>Hello</h2>-->
 <!--&lt;!&ndash;                  <p th:text="*{users[stats.index].username}">User</p>&ndash;&gt;-->
-
-<!--                  &lt;!&ndash;                  <p th:text="${post.id}">User</p>&ndash;&gt;-->
+<!--                  <p th:text="${post.id}"></p>-->
 <!--                  <a th:href="@{/posts/show-username/{id}(id=${post.id})}">View more</a>-->
 <!--                </figcaption>-->
 <!--              </figure>-->
@@ -209,11 +249,7 @@
 
             <li>
               <figure class="effect-oscar">
-                <img
-                  src="/assets/images/home-images/image-5.jpg"
-                  alt=""
-                  class="img-responsive"
-                />
+                <img src="/assets/images/home-images/image-5.jpg" alt="" class="img-responsive"/>
 
                 <figcaption>
                   <h2>A Brand <span>new Agency</span></h2>

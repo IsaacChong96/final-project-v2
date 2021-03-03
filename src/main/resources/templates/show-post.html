@@ -26,7 +26,7 @@
   <body>
     <header th:replace="/fragments/navHeader.html :: navHeader"></header>
 
-    <main role="main-inner-wrapper" class="container">
+    <main th:object="${post}" role="main-inner-wrapper" class="container">
       <div class="blog-details">
         <article class="post-details" id="post-details">
           <header role="blog-header" class="blog-header text-center">
