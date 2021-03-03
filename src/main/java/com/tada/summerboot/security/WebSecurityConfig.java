@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/fragment1")
 				.antMatchers("/products/**")
 				.antMatchers("/posts/**")
-				.antMatchers("/post/**")
+//				.antMatchers("/post/**")
 				.antMatchers("/products/json/**") //is this necessary?
 				.antMatchers("/pages/**")
 				.antMatchers("/assets/**")
@@ -76,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //				.antMatchers("/post/show-username").permitAll()
 				.antMatchers("/about").permitAll()
 				.antMatchers("/profile").permitAll()
-
+				.antMatchers("/post/**").permitAll()
 				.antMatchers("/register").permitAll()
 				.antMatchers("/fragment2").hasRole("ADMIN")
 				.antMatchers("/register-admin").hasRole("ADMIN")
