@@ -98,7 +98,7 @@ public class PostController {
 
         Post new_post = new Post(id, title, content, user_id, multipartFile.getBytes(), new Timestamp(Calendar.getInstance().getTime().getTime()));
         post_service_implementation.createOrUpdatePost(new_post);
-        return "profile";
+        return "redirect:/every-posts-by-single-user";
     }
 
     @GetMapping(path="/post/all", produces = { MediaType.APPLICATION_JSON_VALUE })
