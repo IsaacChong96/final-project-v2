@@ -140,7 +140,7 @@ public class PostController {
     @GetMapping(path="/post/delete/{id}")
     public String destroy(@PathVariable("id") Integer id) {
         post_service_implementation.deletePost(id);
-        return "index";
+        return "redirect:/every-posts-by-single-user";
     }
 
     @RequestMapping(path = {"post/edit", "post/edit/{id}"})
