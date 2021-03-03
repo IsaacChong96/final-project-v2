@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <header th:insert="/fragments/navHeader.html :: navHeader"></header>
+    <header th:replace="/fragments/navHeader.html :: navHeader"></header>
 
     <main role="main-home-wrapper" class="container">
       <div class="row">
@@ -50,7 +50,7 @@
             />
 
             <figcaption>
-              <h2>Mental<span> Resilience</span></h2>
+              <h2>About <span>KAI</span></h2>
               <p>Empower your employees</p>
               <a href="/about">View more</a>
             </figcaption>
@@ -82,30 +82,6 @@
               </figure>
             </li>
           </ul>
-
-          <!-- <div th:each="post, stats : ${posts}">
-            <article>
-              <div class="post-details">
-                <h2 th:text="${post.title}" class="post-title"></h2>
-                <p th:text="*{users[stats.index].username}"></p>
-                <p class="post-date">
-                  <i class="fa fa-calendar-o"></i>
-                  <span
-                    th:text="${#dates.format(post.timestamp, 'dd-MMM-yyyy')}"
-                  ></span>
-                </p>
-              </div>
-              <a th:href="@{post/show-username/{id}(id=${post.id})}">
-                <img
-                  th:src="'/post/images/' + ${post.id}"
-                  class="img-responsive"
-                  alt=""
-                />
-              </a>
-
-
-            </article>
-          </div> -->
         </section>
 
         <!-- Second column -->

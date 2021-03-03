@@ -1,53 +1,66 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
-<head>
-    <meta charset="UTF-8">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+  <head>
+    <meta charset="UTF-8" />
     <title>Footer</title>
-</head>
-<body>
-<footer th:fragment="footer" role="footer">
-    <h1 role="logo">
-        <a href="/" title="KAI"><img src="/assets/images/kai-logo.png"
-                                     title="KAI logo"
-                                     alt="KAI logo" /></a>
-    </h1>
+  </head>
+  <body>
+    <footer th:fragment="footer" role="footer">
+      <h1 role="logo">
+        <a href="/" title="KAI"
+          ><img
+            src="/assets/images/kai-logo.png"
+            title="KAI logo"
+            alt="KAI logo"
+        /></a>
+      </h1>
 
-    <nav role="footer-nav">
+      <nav role="footer-nav">
         <ul>
-            <li><a href="/" title="Home">Home</a></li>
-            <li><a href="/about" title="About">About</a></li>
-            <li>
-                <div sec:authorize="isAuthenticated()">
-                 <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="SIGN OUT" class="nav-link" style="background-color: transparent; border: 0px;"/>
-                 </form>
-                </div>
+          <li><a href="/" title="Home">Home</a></li>
+          <li><a href="/about" title="About">About</a></li>
+          <li>
+            <div sec:authorize="isAuthenticated()">
+              <form th:action="@{/logout}" method="post">
+                <input
+                  type="submit"
+                  value="SIGN OUT"
+                  class="nav-link"
+                  style="background-color: transparent; border: 0px"
+                />
+              </form>
+            </div>
 
-
-                <div sec:authorize="isAnonymous()">
-                    <a class="nav-link" href="/login">Sign in</a>
-                </div>
-            </li>
+            <div sec:authorize="isAnonymous()">
+              <a class="nav-link" href="/login">Sign in</a>
+            </div>
+          </li>
         </ul>
-    </nav>
+      </nav>
 
-    <ul role="social-icons">
+      <ul role="social-icons">
         <li>
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
         </li>
 
         <li>
-            <a href="https://www.facebook.com/kaimentalhealth/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/kaimentalhealth/"
+            ><i class="fa fa-facebook" aria-hidden="true"></i
+          ></a>
         </li>
 
         <li>
-            <a href="https://www.linkedin.com/company/72036368/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/company/72036368/"
+            ><i class="fa fa-linkedin" aria-hidden="true"></i
+          ></a>
         </li>
-    </ul>
+      </ul>
 
-    <p class="copy-right">&copy; 2020 KAI All Rights Reserved</p>
-</footer>
-</body>
+      <p class="copy-right">&copy; 2021 KAI All Rights Reserved</p>
+    </footer>
+  </body>
 </html>
