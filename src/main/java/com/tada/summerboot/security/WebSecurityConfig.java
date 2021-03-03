@@ -58,6 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/fragment1")
 				.antMatchers("/products/**")
 				.antMatchers("/posts/**")
+				.antMatchers("/post/**")
 				.antMatchers("/products/json/**") //is this necessary?
 				.antMatchers("/pages/**")
 				.antMatchers("/assets/**")
@@ -72,6 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/").permitAll()
 				.antMatchers("/product").hasRole("ADMIN")
+//				.antMatchers("/post/show-username").permitAll()
 				.antMatchers("/about").permitAll()
 				.antMatchers("/profile").permitAll()
 

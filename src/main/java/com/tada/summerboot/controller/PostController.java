@@ -82,14 +82,14 @@ public class PostController {
         return "examples/every-posts";
     }
 
-    @GetMapping(value="/post") // it will be set to be /product
-    public String post(Model model){
-        User user = user_service_implementation.current_user();
-
-        model.addAttribute("user", user);
-        model.addAttribute("post", new Post());
-        return "examples/post";
-    }
+//    @GetMapping(value="/post") // it will be set to be /product
+//    public String post(Model model){
+//        User user = user_service_implementation.current_user();
+//
+//        model.addAttribute("user", user);
+//        model.addAttribute("post", new Post());
+//        return "examples/post";
+//    }
 
     @PostMapping(path="post/image/new")
     public String newPostWithImage(@RequestParam(name="id", required = false) Integer id,
@@ -133,7 +133,7 @@ public class PostController {
 //    public String show(Model model, @PathVariable("id") Integer id) {
 //        Optional <Post> post = post_service_implementation.getPost(id);
 //        model.addAttribute("post", post);
-//        return "show-post";
+//        return "examples/show-post";
 //    }
 
     //TODO - change to delete
