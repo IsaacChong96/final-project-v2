@@ -23,8 +23,9 @@
     <link href="/assets/css/effects/component.css" rel="stylesheet" />
   </head>
 
+  <header th:insert="/fragments/navHeader.html :: navHeader"></header>
+
   <body>
-    <header th:replace="/fragments/navHeader.html :: navHeader"></header>
 
     <main th:object="${post}" role="main-inner-wrapper" class="container">
       <div class="blog-details">

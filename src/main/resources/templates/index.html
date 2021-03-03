@@ -77,7 +77,7 @@
                 <figcaption>
                   <h2 th:text="${post.title}" class="post-title"></h2>
                   <p th:text="*{users[stats.index].username}"></p>
-                  <a th:href="@{post/show-username/{id}(id=${post.id})}"></a>
+                  <a th:href="@{posts/show-username/{id}(id=${post.id})}"></a>
                 </figcaption>
               </figure>
             </li>
