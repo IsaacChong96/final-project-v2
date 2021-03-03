@@ -31,11 +31,11 @@ public class PostController {
 
     @GetMapping(path="/posts/show-username/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public String showUserName(Model model, @PathVariable("id") Integer id) {
+        System.out.println("reched here");
         Optional <Post> post = post_service_implementation.getPost(id);
         model.addAttribute("post", post.get());
         Optional <User> user = user_service_implementation.getUser( post.get().getUser_id());
         model.addAttribute("user", user.get());
-        //$(user.username)?
         return "show-post";
     }
 
@@ -49,17 +49,19 @@ public class PostController {
 
     @GetMapping(value="/")
     public String everypostWithoutTable(Model model){
-        List<Post> list = post_service_implementation.getAllPosts(); // get all the posts
-        List<User> userList = new ArrayList<>(); // prepare an empty list
+        System.out.println("reached here /");
+        List<Post> posts = post_service_implementation.getAllPosts(); // get all the posts
+        model.addAttribute("posts", posts);
 
-        for (int i = 0; i < list.size(); i++) {
-            Post post = list.get(i);
+        List<User> users = new ArrayList<>(); // prepare an empty list
+        System.out.println(posts.size());
+        for (int i = 0; i < posts.size(); i++) {
+            Post post = posts.get(i);
             Optional<User> user = user_service_implementation.getUser(post.getUser_id()); // get the user object
-            userList.add(user.get()); // add it to the userList
+            users.add(user.get()); // add it to the userList
         }
 
-        model.addAttribute("posts", list);
-        model.addAttribute("users", userList); // make it available via users variable. Use stats.index to access specific index.
+        model.addAttribute("users", users); // make it available via users variable. Use stats.index to access specific index.
 
         return "index";
     }
@@ -98,7 +100,7 @@ public class PostController {
 
         Post new_post = new Post(id, title, content, user_id, multipartFile.getBytes(), new Timestamp(Calendar.getInstance().getTime().getTime()));
         post_service_implementation.createOrUpdatePost(new_post);
-        return "profile";
+        return "redirect:/every-posts-by-single-user";
     }
 
     @GetMapping(path="/post/all", produces = { MediaType.APPLICATION_JSON_VALUE })
